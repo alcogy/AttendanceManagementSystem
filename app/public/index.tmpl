@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Management System</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <header>
+    <h1>Attendance Management System</h1>
+    <p>John Smith</p>
+  </header>
+  <div class="sub-menu">
+    <div class="monthes">
+      <button>Prev</button>
+      <p class="current">{{ .today }}</p>
+      <button>Next</button>
+    </div>
+    <div class="actions">
+      <button>In</button>
+      <button>Out</button>
+      <button>Break In</button>
+      <button>Break Out</button>
+    </div>
+  </div>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>In</th>
+          <th>Out</th>
+          <th>Break Hours</th>
+          <th>Working Hours</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range .movies }}
+        <tr>
+          <td>09/01 Mon.</td>
+          <td>10:01</td>
+          <td>19:13</td>
+          <td>1:00</td>
+          <td>8:12</td>
+          <td>{{ . }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

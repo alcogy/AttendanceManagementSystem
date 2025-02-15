@@ -1,0 +1,73 @@
+:root {
+  --content-width: 880px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  font-size: 14px;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ddd; 
+  padding: 8px 24px;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+}
+
+div.sub-menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--content-width);
+  padding: 16px;
+}
+
+div.sub-menu .monthes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+div.sub-menu .actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+main table {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--content-width);
+  border-collapse: collapse;
+}
+
+main table thead th,
+main table tbody td {
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+}
+
+main table thead th {
+  border-top: 1px solid #ccc;
+  text-align: left;
+}
