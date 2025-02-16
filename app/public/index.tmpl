@@ -37,14 +37,14 @@
         </tr>
       </thead>
       <tbody>
-        {{ range .movies }}
+        {{ range .items }}
         <tr>
-          <td>09/01 Mon.</td>
-          <td>10:01</td>
-          <td>19:13</td>
-          <td>1:00</td>
-          <td>8:12</td>
-          <td>{{ . }}</td>
+          <td>{{ .Date }}</td>
+          <td>{{ .In }}</td>
+          <td>{{ .Out }}</td>
+          <td>{{ .BreakHours }}</td>
+          <td>{{ .WorkingHours }}</td>
+          <td>{{ .Remarks }}</td>
         </tr>
         {{ end }}
       </tbody>
