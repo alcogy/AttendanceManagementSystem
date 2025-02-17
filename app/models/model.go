@@ -6,16 +6,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
-
-type Item struct {
-	Date         string
-	In           string
-	Out          string
-	BreakHours   string
-	WorkingHours string
-	Remarks      string
-}
 
 // Home View.
 func HtmlHome(c *gin.Context) {
@@ -33,13 +25,13 @@ func HtmlHome(c *gin.Context) {
 			Out:          "10:12",
 			BreakHours:   "10:12",
 			WorkingHours: "10:12",
-			Remarks:      "",
 		})
 	}
 
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"items": items,
-		"today": current.Format("2006/1/2 Mon"),
+		"userName": "Smith Get",
+		"items":    items,
+		"today":    current.Format("2006/1/2 Mon"),
 	})
 }
 
@@ -48,4 +40,43 @@ func ApiCheck(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"hello": "world",
 	})
+}
+
+func ApiWorkIn(c *gin.Context) {
+	id := uuid.Must(uuid.NewRandom())
+	now := time.Now()
+	data := Attendance{
+		ID:        id.String(),
+		Date:      &now,
+		InTime:    &now,
+		OutTime:   nil,
+		BreakHour: nil,
+		UserID:    "abf874f5-cfef-4c17-9be5-532259e9be65",
+	}
+
+	RegistrateWorkIn(&data)
+
+	c.JSON(http.StatusOK, gin.H{
+		"id": id,
+	})
+}
+
+func ApiWorkOut(c *gin.Context) {
+	var json WorkOutBody
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	RegistrateWorkOut(json.ID)
+	c.JSON(http.StatusOK, gin.H{
+		"result": "ok",
+	})
+}
+
+func ApiBreakIn(c *gin.Context) {
+	// TODO Not Implement.
+}
+
+func ApiBreakOut(c *gin.Context) {
+	// TODO Not Implement.
 }

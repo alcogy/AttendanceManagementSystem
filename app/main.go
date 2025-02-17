@@ -20,6 +20,10 @@ func main() {
 	api := router.Group("/api")
 	{
 		api.GET("/hello", models.ApiCheck)
+		api.POST("/workin", models.ApiWorkIn)
+		api.POST("/workout", models.ApiWorkOut)
+		api.POST("/breakin", models.ApiBreakIn)
+		api.POST("/breakout", models.ApiBreakOut)
 	}
 
 	router.Run(":9999")
